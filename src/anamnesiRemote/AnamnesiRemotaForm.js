@@ -41,12 +41,21 @@ class AnamnesiRemotaForm extends Component {
   }
 
   render() {
-    const { handleSubmit, pristine, submitting, loading } = this.props;
+    const { handleSubmit, pristine, submitting, loading, errors } = this.props;
+    let errorsMessage = null;
+    if(errors.global){
+      errorsMessage = `Errors: ${errors.global}`;
+    }
+
+    console.log(errors);
     
     return (
+
+
       <Grid centered columns={2}>
         <Grid.Column>
           <h3 style={{marginTop:"1em"}}>Anamnesi remota</h3>
+          <div>{errorsMessage}</div>
           <Form onSubmit={handleSubmit} loading={loading}>
 
             <Field name="data" type="text" component={MyDatePicker} parse={dateFromPickerParser} label="Data" />  

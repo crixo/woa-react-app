@@ -42,7 +42,7 @@ class PazienteDetailsPage extends Component {
 function mapStateToProps(state, ownProps) {
   return {
     paziente: state.pazienteStore.paziente,
-    anamnesiRemote: state.pazienteStore.anamnesiRemote,
+    anamnesiRemote: state.anamnesiRemoteStore.entities,
     consulti: state.pazienteStore.consulti
   };
 }

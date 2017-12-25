@@ -22,8 +22,10 @@ export default (state=initialState, action={}) => {
     }
     
     case 'FETCH_PAZIENTE_FULFILLED': {
+      let paziente = {...action.payload.data};
+
       let consulti=[], esami=[], trattamenti=[], valutazioni=[], anamnesiProssime = [];
-      action.payload.data.consulti.forEach(c => {
+      paziente.consulti.forEach(c => {
         esami.push(...c.esami);
         trattamenti.push(...c.trattamenti);
         valutazioni.push(...c.valutazioni);
@@ -37,9 +39,8 @@ export default (state=initialState, action={}) => {
         consulti.push(c);
       });
 
-      const anamnesiRemote = [...action.payload.data.anamnesiRemote];
+      const anamnesiRemote = [...paziente.anamnesiRemote];
 
-      var paziente = action.payload.data;
       delete paziente.consulti;
       delete paziente.anamnesiRemote;
 
@@ -130,47 +131,47 @@ export default (state=initialState, action={}) => {
       }
     }   
 
-    case 'FETCH_TIPI_ANAMNESI_PENDING': {
-      return {
-        ...state,
-        loading: true
-      }
-    }  
+    // case 'FETCH_TIPI_ANAMNESI_PENDING': {
+    //   return {
+    //     ...state,
+    //     loading: true
+    //   }
+    // }  
     
-    case 'FETCH_TIPI_ANAMNESI_FULFILLED': {
-      return {
-        ...state,
-        tipiAnamnesi: action.payload.data.map(x=>({value:x.id, text:x.descrizione})),
-        loading: false
-      }
-    }  
+    // case 'FETCH_TIPI_ANAMNESI_FULFILLED': {
+    //   return {
+    //     ...state,
+    //     tipiAnamnesi: action.payload.data.map(x=>({value:x.id, text:x.descrizione})),
+    //     loading: false
+    //   }
+    // }  
 
-    case 'SAVE_ANAMNESI_REMOTA_PENDING': {
-      return {
-        ...state,
-        loading: true
-      }
-    }  
+    // case 'SAVE_ANAMNESI_REMOTA_PENDING': {
+    //   return {
+    //     ...state,
+    //     loading: true
+    //   }
+    // }  
 
-    case 'SAVE_ANAMNESI_REMOTA_FULFILLED': {
-      console.log(action.payload.data);
-      let anamesi = action.payload.data;
-      const tipo = state.tipiAnamnesi.find(x=>x.id === anamesi.tipoId);
-      anamesi.tipo = {...tipo};
-      return {
-        ...state,
-        anamnesiRemote: [...state.anamnesiRemote.filter(x => x.id !== action.payload.data.id), Object.assign({}, anamesi)],
-        loading: false
-      }
-    }  
-    case 'SAVE_ANAMNESI_REMOTA_REJECTED': {
-      const errors = { global: 'SAVE_ANAMNESI_REMOTA_REJECTED'};
-      return {
-        ...state,
-        errors: errors,
-        loading: false
-      }
-    }  
+    // case 'SAVE_ANAMNESI_REMOTA_FULFILLED': {
+    //   console.log(action.payload.data);
+    //   let anamesi = action.payload.data;
+    //   const tipo = state.tipiAnamnesi.find(x=>x.id === anamesi.tipoId);
+    //   anamesi.tipo = {...tipo};
+    //   return {
+    //     ...state,
+    //     anamnesiRemote: [...state.anamnesiRemote.filter(x => x.id !== action.payload.data.id), Object.assign({}, anamesi)],
+    //     loading: false
+    //   }
+    // }  
+    // case 'SAVE_ANAMNESI_REMOTA_REJECTED': {
+    //   const errors = { global: 'SAVE_ANAMNESI_REMOTA_REJECTED'};
+    //   return {
+    //     ...state,
+    //     errors: errors,
+    //     loading: false
+    //   }
+    // }  
     
 
     case 'SAVE_ANAMNESI_PROSSIMA_PENDING': {

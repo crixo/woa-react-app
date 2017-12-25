@@ -2,7 +2,9 @@ import { createPaginator, configurePageParams } from '@orange-marmalade/paginate
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form';
 import { fetchPazienti } from '../pazienti/pazientiActions'
-import PazienteReducer from '../pazienti/pazientiReducer'
+import PazientiReducer from '../pazienti/pazientiReducer'
+import AnamnesiRemoteReducer from '../anamnesiRemote/anamnesiRemoteReducer'
+import UiReducer from './uiReducer'
 
 configurePageParams({
   page: 'skip',
@@ -20,7 +22,9 @@ export default combineReducers({
         pageSize: 10
       },
   }),
-  pazienteStore: PazienteReducer,
+  pazienteStore: PazientiReducer,
+  anamnesiRemoteStore: AnamnesiRemoteReducer,
+  uiStore: UiReducer,
   form: formReducer
 });
 

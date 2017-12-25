@@ -32,9 +32,11 @@ class AnamnesiRemotaFormPage extends Component {
   submit = (anamnesi) => {
     return this.props.saveAnamnesiRemota(anamnesi)
       .then(response => this.setState({ redirect:true }))
-      .catch(err => {
-         throw new SubmissionError(this.props.errors)
-       })
+      .catch(err => { 
+        console.log(err);
+        console.log(this.props.errors);
+        throw new SubmissionError(this.props.errors) 
+      })
   }
 
   render() {
@@ -47,7 +49,7 @@ class AnamnesiRemotaFormPage extends Component {
             <PazienteDetails paziente={this.props.paziente} />
           </div>
           <div className="twelve wide column">
-            <AnamnesiRemotaForm entity={this.props.anamnesi} tipiAnamnesi={this.props.tipiAnamnesi} loading={this.props.loading} onSubmit={this.submit} />
+            <AnamnesiRemotaForm entity={this.props.anamnesi} errors={this.props.errors} tipiAnamnesi={this.props.tipiAnamnesi} loading={this.props.loading} onSubmit={this.submit} />
           </div>
       </div>
     )
@@ -57,14 +59,14 @@ class AnamnesiRemotaFormPage extends Component {
 function mapStateToProps(state, ownProps) {
   const { id } = ownProps.match.params;
   const anamnesiRemotaId = parseInt(id, 10);
-  const anamnesi = id? state.pazienteStore.anamnesiRemote.find(x=>x.id === anamnesiRemotaId) : {pazienteId: state.pazienteStore.paziente.id};
+  const anamnesi = id? state.anamnesiRemoteStore.entities.find(x=>x.id === anamnesiRemotaId) : {pazienteId: state.pazienteStore.paziente.id};
   console.log(anamnesi);
   return {
     paziente: state.pazienteStore.paziente,
     anamnesi: anamnesi,
-    tipiAnamnesi: state.pazienteStore.tipiAnamnesi,
-    errors: state.pazienteStore.errors,
-    loading: state.pazienteStore.loading
+    tipiAnamnesi: state.anamnesiRemoteStore.tipi,
+    errors: state.uiStore.errors,
+    loading: state.uiStore.loading
   }
 }
 

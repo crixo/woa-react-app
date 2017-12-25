@@ -1,6 +1,6 @@
 export default {
   paziente: {},
-  anamnesiRemote:[],
+  anamnesiRemote:{tipi:[], entities:[]},
   consulti: [],
   anamnesiProssime:[],
   esami:[],
@@ -8,5 +8,6 @@ export default {
   valutazioni:[],
   province:[],
   tipiAnamnesi:[],
-  tipiEsame:[]
+  tipiEsame:[],
+  uiState: {loading: false, errors:{}}
 };

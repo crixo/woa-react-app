@@ -23,7 +23,8 @@ export default function configureStore(initialState) {
 
   store.subscribe(throttle(() => {
     saveState({
-      pazienteStore: store.getState().pazienteStore
+      pazienteStore: store.getState().pazienteStore,
+      anamnesiRemoteStore: store.getState().anamnesiRemoteStore,
     })
   }, 1000))
 
