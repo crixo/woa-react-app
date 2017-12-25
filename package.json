@@ -1,0 +1,42 @@
+{
+  "name": "woa-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@orange-marmalade/paginate-this": "^4.0.0-beta-19",
+    "axios": "^0.17.1",
+    "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
+    "immutable": "^3.8.2",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.3",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-datepicker": "^0.61.0",
+    "react-dom": "^16.2.0",
+    "react-fontawesome": "^1.6.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "1.0.17",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.2.0",
+    "redux-promise-middleware": "^5.0.0",
+    "redux-thunk": "^2.2.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.77.0"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/styles/scss -o src/styles/scss",
+    "watch-css": "npm run build-css && node-sass-chokidar src/styles/scss -o src/styles/scss --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
