@@ -16,19 +16,27 @@ class ConsultoDetailsPage extends Component {
 
   render() {
     return (
-      <div className="ui three column divided grid">
+      <div className="ui two column divided grid">
         <div className="row">
           <div className="four wide column">
-            <ConsultoDetails consulto={this.props.consulto} />
             <PazienteDetails paziente={this.props.paziente} />
           </div>
-          <div className="five wide column">
-            <AnamnesiProssima anamnesi={this.props.anamnesiProssima} />
-          </div>
-          <div className="seven wide column">
-            <EsamiList esami={this.props.esami} />
-            <TrattamentiList trattamenti={this.props.trattamenti} />
-            <ValutazioniList valutazioni={this.props.valutazioni} />
+          <div className="twelve wide column">
+            <div className="ui internally celled grid">
+              <div className="row">
+                <ConsultoDetails consulto={this.props.consulto} />
+              </div>
+              <div className="row">
+                <div className="five wide column">
+                  <AnamnesiProssima anamnesi={this.props.anamnesiProssima} />
+                </div>
+                <div className="seven wide column">
+                  <EsamiList esami={this.props.esami} />
+                  <TrattamentiList trattamenti={this.props.trattamenti} />
+                  <ValutazioniList valutazioni={this.props.valutazioni} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>   

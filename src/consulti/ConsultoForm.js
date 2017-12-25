@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
-import {MyInput, MyDatePicker, MySelect, dateFromPickerParser} from '../common/FormFields';
+import {MyTextarea, MyDatePicker, MySelect, dateFromPickerParser} from '../common/FormFields';
 
 const validate = (values) => {
   const errors = {};
@@ -10,9 +10,9 @@ const validate = (values) => {
       message: 'Data obbligatorio'
     }
   }
-  if(!values.descrizione) {
-    errors.descrizione = {
-      message: 'Descrizione obbligatoria'
+  if(!values.problemaIniziale) {
+    errors.problemaIniziale = {
+      message: 'Problema Iniziale obbligatorio'
     }
   }
   return errors;
@@ -46,7 +46,7 @@ class ConsultoForm extends Component {
 
             <Field name="data" type="text" component={MyDatePicker} parse={dateFromPickerParser} label="Data" />  
 
-            <Field name="descrizione" type="text" component={MyInput} label="Descrizione"/>
+            <Field name="problemaIniziale" type="text" component={MyTextarea} label="Problema Iniziale"/>
             
             <Button primary type='submit' disabled={pristine || submitting}>Save</Button>
           </Form>

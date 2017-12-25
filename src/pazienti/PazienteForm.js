@@ -4,15 +4,20 @@ import { Field, reduxForm } from 'redux-form';
 import {MyInput, MyDatePicker, MySelect, dateFromPickerParser} from '../common/FormFields';
 
 const validate = (values) => {
-  const errors = {name:{}};
+  const errors = {};
   if(!values.nome) {
     errors.nome = {
       message: 'Nome obbligatorio'
     }
   }
+  if(!values.cognome) {
+    errors.cognome = {
+      message: 'Cognome obbligatorio'
+    }
+  }
   if(!values.dataDiNascita) {
     errors.dataDiNascita = {
-      message: 'DoB obbligatorio'
+      message: 'data di nascita obbligatoria'
     }
   }
   // if(!values.phone) {
@@ -26,7 +31,7 @@ const validate = (values) => {
   // }
   if(values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = {
-      message: 'Invalid email address'
+      message: 'email non valida'
     }
   }
   return errors;

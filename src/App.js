@@ -8,6 +8,7 @@ import PazienteDetailsPage from './pages/paziente-details-page';
 import ConsultoDetailsPage from './pages/consulto-details-page';
 import ConsultoFormPage from './pages/consulto-form-page';
 import AnamnesiRemotaFormPage from './pages/anamnesi-remota-form-page';
+import AnamnesiProssimaFormPage from './pages/anamnesi-prossima-form-page';
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
             Consulto
           </NavLink> 
         </div>
+        
         <Route exact path="/" component={PazientiListPage}/>
         <Route path="/paziente/details/:id" component={PazienteDetailsPage}/>
         <Route path="/paziente/new" component={PazienteFormPage}/>
@@ -38,6 +40,9 @@ class App extends Component {
         <Route path="/consulto/details/:id" component={ConsultoDetailsPage}/>
         <Route path="/consulto/new" component={ConsultoFormPage}/>
         <Route path="/consulto/edit/:id" component={ConsultoFormPage}/>
+
+        <Route path="/anamnesi-prossima/new" component={AnamnesiProssimaFormPage}/>
+        <Route path="/anamnesi-prossima/edit/:id" component={AnamnesiProssimaFormPage}/>        
       </Container>
     );
   }

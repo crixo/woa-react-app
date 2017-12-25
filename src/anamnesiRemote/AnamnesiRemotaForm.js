@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
-import {MyInput, MyDatePicker, MySelect, dateFromPickerParser} from '../common/FormFields';
+import {MyTextarea, MyDatePicker, MySelect, dateFromPickerParser} from '../common/FormFields';
 
 const validate = (values) => {
-  const errors = {name:{}};
-  if(!values.nome) {
-    errors.nome = {
-      message: 'Nome obbligatorio'
+  const errors = {};
+  if(!values.data) {
+    errors.data = {
+      message: 'Data obbligatoria'
     }
   }
-  // if(!values.phone) {
-  //   errors.phone = {
-  //     message: 'You need to provide a Phone number'
-  //   }
-  // } else if(!/^\+(?:[0-9] ?){6,14}[0-9]$/.test(values.phone)) {
-  //   errors.phone = {
-  //     message: 'Phone number must be in International format'
-  //   }
-  // }
-  if(values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = {
-      message: 'Invalid email address'
+  if(!values.tipoId) {
+    errors.tipoId = {
+      message: 'Tipo obbligatorio'
+    }
+  }
+  if(!values.descrizione) {
+    errors.descrizione = {
+      message: 'Descrizione obbligatorio'
     }
   }
   return errors;
@@ -57,7 +53,7 @@ class AnamnesiRemotaForm extends Component {
 
             <Field name="tipoId" component={MySelect} label="Tipo" options={this.props.tipiAnamnesi} selectionMessage="scegli tipo" />
 
-            <Field name="descrizione" type="text" component={MyInput} label="Descrizione"/>
+            <Field name="descrizione" type="text" component={MyTextarea} label="Descrizione"/>
             
             <Button primary type='submit' disabled={pristine || submitting}>Save</Button>
           </Form>

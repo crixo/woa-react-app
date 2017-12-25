@@ -22,6 +22,16 @@ export const MyInput = ({ input, width, label, type, meta: { touched, error } })
   );
 }
 
+export const MyTextarea = ({ input, width, label, type, meta: { touched, error } }) => {
+  return(
+  <Form.Field className={classnames({[`${width}`]:width!==undefined}, {wide:width!==undefined}, {error:touched && error})}>
+    <label>{label}</label>
+    <textarea {...input} placeholder={label} type={type}></textarea>
+    {touched && error && <span className="error">{error.message}</span>}
+  </Form.Field>
+  );
+}
+
 const converToIsoStringFromLocalString = x => {
   const dateParts = x.split('/');
   const dateAsIsoString = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}T00:00:00.000Z`;
