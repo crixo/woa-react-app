@@ -2,7 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import LocalDate from '../common/LocalDate'
 
-export default function AnamnesiRemoteList({anamnesi}) {
+export default function AnamnesiRemoteList({anamnesi, tipi}) {
+
+    const findDescr = (id, lookup) => {
+        return (id !== undefined && lookup.length>0)?
+                lookup.find(x=>x.value === id).text
+                : '';
+    }
+
     return (
         <div>
             <h3>
@@ -22,7 +29,7 @@ export default function AnamnesiRemoteList({anamnesi}) {
             {anamnesi.map(x =>
                 <tr key={x.id}>
                     <td><LocalDate value={x.data} /></td>
-                    <td>{x.tipo.descrizione}</td>
+                    <td>{ findDescr(x.tipoId, tipi) }</td>
                     <td>{x.descrizione}</td>
                     <td><Link to={`/anamnesi-remota/edit/${x.id}`}>Show</Link></td>
                 </tr>

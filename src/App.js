@@ -9,8 +9,17 @@ import ConsultoDetailsPage from './pages/consulto-details-page';
 import ConsultoFormPage from './pages/consulto-form-page';
 import AnamnesiRemotaFormPage from './pages/anamnesi-remota-form-page';
 import AnamnesiProssimaFormPage from './pages/anamnesi-prossima-form-page';
+import { fetchProvince } from './pazienti/pazientiActions';
+import { fetchTipiAnamnesiRemote } from './anamnesiRemote/anamnesiRemoteActions';
 
 class App extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.props.fetchProvince();
+    this.props.fetchTipiAnamnesiRemote();
+  }
+
   render() {
     return (
       <Container>
@@ -61,4 +70,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(  mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, {fetchProvince, fetchTipiAnamnesiRemote})(App));

@@ -4,7 +4,7 @@ import { SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
 import PazienteDetails from '../pazienti/PazienteDetails';
 import AnamnesiRemotaForm from '../anamnesiRemote/AnamnesiRemotaForm';
-import { fetchTipi, saveAnamnesiRemota} from '../anamnesiRemote/anamnesiRemoteActions';
+import {saveAnamnesiRemota} from '../anamnesiRemote/anamnesiRemoteActions';
 
 class AnamnesiRemotaFormPage extends Component {
 
@@ -14,10 +14,6 @@ class AnamnesiRemotaFormPage extends Component {
     this.state = {
       redirect: false
     };
-
-    if(this.props.tipiAnamnesi.length === 0){
-      this.props.fetchTipi();
-    }
   }
 
   componentDidMount = () => {
@@ -70,4 +66,4 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-export default connect(mapStateToProps, {saveAnamnesiRemota, fetchTipi})(AnamnesiRemotaFormPage);
+export default connect(mapStateToProps, {saveAnamnesiRemota})(AnamnesiRemotaFormPage);

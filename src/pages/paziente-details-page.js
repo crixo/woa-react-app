@@ -28,7 +28,7 @@ class PazienteDetailsPage extends Component {
           <PazienteDetails paziente={this.props.paziente} />
           </div>
           <div className="five wide column">
-            <AnamnesiRemoteList anamnesi={this.props.anamnesiRemote} />
+            <AnamnesiRemoteList anamnesi={this.props.anamnesiRemote} tipi={this.props.tipiAnamnesiRemota} />
           </div>
           <div className="seven wide column">
             <ConsultiList consulti={this.props.consulti} />
@@ -43,6 +43,7 @@ function mapStateToProps(state, ownProps) {
   return {
     paziente: state.pazienteStore.paziente,
     anamnesiRemote: state.anamnesiRemoteStore.entities,
+    tipiAnamnesiRemota: state.anamnesiRemoteStore.tipi,
     consulti: state.consultiStore.entities
   };
 }

@@ -5,11 +5,12 @@ export default (state=initialState.anamnesiRemote, action={}) => {
   switch (action.type) {
 
     case 'FETCH_PAZIENTE_PENDING': {
-      return initialState.anamnesiRemote;
+      return {
+        ...state
+      };
     }      
 
     case 'FETCH_PAZIENTE_FULFILLED': {
-      console.log(action.payload.data);
       return {
         ...state,
         entities: [...action.payload.data.anamnesiRemote]
@@ -37,15 +38,14 @@ export default (state=initialState.anamnesiRemote, action={}) => {
     }  
 
     case 'SAVE_ANAMNESI_REMOTA_FULFILLED': {
-      console.log(action.payload.data);
       let anamesi = {...action.payload.data};
-      const tipo = state.tipi.find(x=>x.id === anamesi.tipoId);
-      anamesi.tipo = {...tipo};
+      // const tipo = state.tipi.find(x=>x.id === anamesi.tipoId);
+      // anamesi.tipo = {...tipo};
       return {
         ...state,
         entities: [
           ...state.entities.filter(x => x.id !== action.payload.data.id), 
-          Object.assign({}, anamesi)
+          anamesi
         ]
       }
     }  

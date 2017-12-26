@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { Redirect } from 'react-router';
 import { SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
-import { newPaziente, savePaziente, fetchPaziente, fetchProvince} from '../pazienti/pazientiActions';
+import { newPaziente, savePaziente, fetchPaziente} from '../pazienti/pazientiActions';
 import PazienteForm from '../pazienti/PazienteForm';
 
 class PazienteFormPage extends Component {
@@ -13,10 +13,6 @@ class PazienteFormPage extends Component {
     this.state = {
       redirect: false
     };
-
-    if(this.props.province.length === 0){
-      this.props.fetchProvince();
-    }
   }
 
   componentDidMount = () => {
@@ -59,4 +55,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {newPaziente, savePaziente, fetchProvince, fetchPaziente})(PazienteFormPage);
+export default connect(mapStateToProps, {newPaziente, savePaziente, fetchPaziente})(PazienteFormPage);

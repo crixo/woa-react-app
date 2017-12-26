@@ -1,6 +1,6 @@
 import api from './AnamnesiRemoteApi';
 
-  export function fetchTipi() {
+  export function fetchTipiAnamnesiRemote() {
     return dispatch => {
       return dispatch({
         type: 'FETCH_TIPI_ANAMNESI',
