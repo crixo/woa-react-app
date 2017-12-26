@@ -1,12 +1,20 @@
 import initialState from '../store/initialState';
 
-export default (state=initialState.anamnesiRemote, action={}) => {
+export default (state=initialState.anamnesiRemoteState, action={}) => {
   //console.log(`reducer -> ${action.type}`)
   switch (action.type) {
 
+    case 'PAZIENTE_RESET': {
+      return {
+        ...state,
+        entities: []
+      }
+    }  
+
     case 'FETCH_PAZIENTE_PENDING': {
       return {
-        ...state
+        ...state,
+        entities: []
       };
     }      
 

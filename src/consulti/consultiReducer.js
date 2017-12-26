@@ -1,26 +1,25 @@
 import initialState from '../store/initialState';
 
 
-export default (state=initialState.consultiStore, action={}) => {
+export default (state=initialState.consultiState, action={}) => {
   //console.log(`reducer -> ${action.type}`)
   switch (action.type) {
     case 'PAZIENTE_RESET': {
       return {
-        ...initialState.consultiStore
+        ...state,
+        entities: []
       }
     }
 
     case 'FETCH_PAZIENTE_PENDING': {
       return {
-        ...initialState.consultiStore
+        ...state,
+        entities: []
       }
     }
     
     case 'FETCH_PAZIENTE_FULFILLED': {
       let paziente = {...action.payload.data};
-
-      console.log(paziente);
-
       let consulti=[];
       paziente.consulti.forEach(consulto => {
         let c = {...consulto};
@@ -50,7 +49,6 @@ export default (state=initialState.consultiStore, action={}) => {
     }  
 
     case 'SAVE_CONSULTO_FULFILLED': {
-      console.log(action.payload.data);
       const consulto = {...action.payload.data};
       return {
         ...state,

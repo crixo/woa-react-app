@@ -49,9 +49,9 @@ class PazienteFormPage extends Component {
 function mapStateToProps(state) {
   return {
     paziente: state.pazienteStore.paziente,
-    errors: state.pazienteStore.errors,
+    errors: state.uiStore.errors,
     province: state.pazienteStore.province,
-    loading: state.pazienteStore.loading
+    loading: state.uiStore.loading
   }
 }
 

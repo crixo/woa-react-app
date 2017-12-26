@@ -1,13 +1,10 @@
 export default {
-  paziente: {},
-  anamnesiRemote:{tipi:[], entities:[]},
-  consultiStore:{activeConsultoId:undefined, entities:[]},
-  anamnesiProssimeStore:{entities:[]},
-  esami:[],
-  trattamenti:[],
-  valutazioni:[],
-  province:[],
-  tipiAnamnesi:[],
-  tipiEsame:[],
+  pazienteState: {paziente:{}, province:[]},
+  anamnesiRemoteState:{tipi:[], entities:[]},
+  consultiState:{activeConsultoId:undefined, entities:[]},
+  anamnesiProssimeState:{entities:[]},
+  esamiState:{tipi:[], entities:[]},
+  trattamentiState:{entities:[]},
+  valutazioniState:{entities:[]},
   uiState: {loading: false, errors:{}}
 };

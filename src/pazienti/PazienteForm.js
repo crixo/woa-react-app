@@ -51,11 +51,13 @@ class PazienteForm extends Component {
 
   render() {
     const { handleSubmit, pristine, submitting, loading } = this.props;
-    
+
+    const title = this.props.paziente.id===undefined? 'Crea nuovo paziente' : 'Modifica paziente';
+
     return (
       <Grid centered columns={2}>
         <Grid.Column>
-          <h3 style={{marginTop:"1em"}}>Crea nuovo paziente</h3>
+          <h3 style={{marginTop:"1em"}}>{title}</h3>
           <Form onSubmit={handleSubmit} loading={loading}>
 
             <Form.Group widths='equal'>

@@ -3,8 +3,6 @@ import initialState from '../store/initialState';
 
 export default (state=initialState.uiState, action={}) => {
 
-  console.log(action.type);
-
   if(action.type.indexOf('_PENDING')>0){
     return {
       errors: {},
@@ -13,7 +11,6 @@ export default (state=initialState.uiState, action={}) => {
   }
 
   if(action.type.indexOf('_FULFILLED')>0){
-    console.log(action.type);
     return {
       ...state,
       loading: false

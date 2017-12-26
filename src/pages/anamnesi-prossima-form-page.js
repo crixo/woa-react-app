@@ -61,8 +61,8 @@ function mapStateToProps(state, ownProps) {
     paziente: paziente,
     anamnesi: anamnesi,
     activeConsultoId: activeConsultoId,
-    errors: state.pazienteStore.errors,
-    loading: state.pazienteStore.loading
+    errors: state.uiStore.errors,
+    loading: state.uiStore.loading
   }
 }
 

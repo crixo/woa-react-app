@@ -1,23 +1,28 @@
 import initialState from '../store/initialState';
 
 
-export default (state=initialState, action={}) => {
+export default (state=initialState.pazienteState, action={}) => {
   //console.log(`reducer -> ${action.type}`)
   switch (action.type) {
+
+    case 'NEW_PAZIENTE': {
+      return {
+        ...state,
+        paziente: initialState.pazienteState
+      }
+    }
+
     case 'PAZIENTE_RESET': {
       return {
         ...state,
-        loading: false,
-        paziente: initialState.paziente,
-        activeConsultoId: undefined
+        paziente: initialState.pazienteState
       }
     }
 
     case 'FETCH_PAZIENTE_PENDING': {
       return {
         ...state,
-        loading: true,
-        paziente: initialState.paziente
+        paziente: initialState.pazienteState
       }
     }
     
@@ -53,16 +58,7 @@ export default (state=initialState, action={}) => {
         anamnesiProssime: anamnesiProssime,
         esami: esami,
         trattamenti: trattamenti,
-        valutazioni: valutazioni,
-        errors: {},
-        loading: false
-      }
-    }
-
-    case 'NEW_PAZIENTE': {
-      return {
-        ...state,
-        paziente: {cognome:"test"}
+        valutazioni: valutazioni
       }
     }
 
@@ -79,8 +75,7 @@ export default (state=initialState, action={}) => {
 
     case 'SAVE_PAZIENTE_PENDING': {
       return {
-        ...state,
-        loading: true
+        ...state
       }
     }
 
@@ -89,24 +84,19 @@ export default (state=initialState, action={}) => {
       // console.log(action.payload.data);
       return {
         ...state,
-        paziente: action.payload.data,
-        errors: {},
-        loading: false
+        paziente: action.payload.data
       }
     }
 
     case 'SAVE_PAZIENTE_REJECTED': {
-      console.log(action);
-      const data = {message: "error"};
+      //const data = {message: "error"};
       //console.log(action.payload);
       //const data = action.payload.response.data;
       // convert feathers error formatting to match client-side error formatting
       //const { "name.first":first, "name.last":last, phone, email } = data.errors;
-      const errors = { global: data.message, nome: {message:"nome is required"}, prov: {message:"prov is required"}, gender: {message:"prov is required"}};//, name: { first,last }, phone, email 
+      //const errors = { global: data.message, nome: {message:"nome is required"}, prov: {message:"prov is required"}, gender: {message:"prov is required"}};//, name: { first,last }, phone, email 
       return {
-        ...state,
-        errors: errors,
-        loading: false
+        ...state
       }
     }   
 
@@ -119,16 +109,14 @@ export default (state=initialState, action={}) => {
 
     case 'FETCH_PROVINCE_PENDING': {
       return {
-        ...state,
-        loading: true
+        ...state
       }
     }   
 
     case 'FETCH_PROVINCE_FULFILLED': {
       return {
         ...state,
-        province: action.payload.data.map(x=>({value:x.sigla, text:x.descrizione})),
-        loading: false
+        province: action.payload.data.map(x=>({value:x.sigla, text:x.descrizione}))
       }
     }   
 

@@ -58,8 +58,8 @@ function mapStateToProps(state, ownProps) {
   return {
     paziente: state.pazienteStore.paziente,
     entity: entity,
-    errors: state.pazienteStore.errors,
-    loading: state.pazienteStore.loading
+    errors: state.uiStore.errors,
+    loading: state.uiStore.loading
   }
 }
 

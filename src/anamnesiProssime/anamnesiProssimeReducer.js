@@ -1,30 +1,29 @@
 import initialState from '../store/initialState';
 
-export default (state=initialState.anamnesiProssimeStore, action={}) => {
+export default (state=initialState.anamnesiProssimeState, action={}) => {
   switch (action.type) {
 
     case 'PAZIENTE_RESET': {
       return {
-        ...initialState.anamnesiProssimeStore
+        ...state,
+        entities: []
       }
     }
 
     case 'FETCH_PAZIENTE_PENDING': {
       return {
-        ...initialState.anamnesiProssimeStore
+        ...state,
+        entities: []
       }
     }
     
     case 'FETCH_PAZIENTE_FULFILLED': {
       let paziente = {...action.payload.data};
 
-      console.log(paziente);
-
       let anamnesiProssime = [];
       paziente.consulti.forEach(consulto => {
         let c = {...consulto};
         if(c.anamnesiProssima !== undefined){
-          console.log(c.anamnesiProssima);
           anamnesiProssime.push(c.anamnesiProssima);
         }
       });
@@ -33,8 +32,6 @@ export default (state=initialState.anamnesiProssimeStore, action={}) => {
         ...initialState.anamnesiProssimeStore,
         entities: anamnesiProssime
       };
-
-      console.log(newState);
 
       return newState;
     }    
@@ -47,7 +44,6 @@ export default (state=initialState.anamnesiProssimeStore, action={}) => {
     }  
 
     case 'SAVE_ANAMNESI_PROSSIMA_FULFILLED': {
-      console.log(action.payload.data);
       const anamesi = {...action.payload.data};
       return {
         ...state,
