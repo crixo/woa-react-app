@@ -11,6 +11,7 @@ import ConsultoFormPage from './pages/consulto-form-page';
 import AnamnesiRemotaFormPage from './pages/anamnesi-remota-form-page';
 import AnamnesiProssimaFormPage from './pages/anamnesi-prossima-form-page';
 import EsameFormPage from './pages/esame-form-page';
+import TrattamentoFormPage from './pages/trattamento-form-page';
 
 import { fetchProvince } from './pazienti/pazientiActions';
 import { fetchTipiAnamnesiRemote } from './anamnesiRemote/anamnesiRemoteActions';
@@ -59,7 +60,10 @@ class App extends Component {
         <Route path="/anamnesi-prossima/edit/:id" component={AnamnesiProssimaFormPage}/>   
 
         <Route path="/esame/new" component={EsameFormPage}/>
-        <Route path="/esame/edit/:id" component={EsameFormPage}/>       
+        <Route path="/esame/edit/:id" component={EsameFormPage}/>     
+
+        <Route path="/trattamento/new" component={TrattamentoFormPage}/>
+        <Route path="/trattamento/edit/:id" component={TrattamentoFormPage}/>            
       </Container>
     );
   }

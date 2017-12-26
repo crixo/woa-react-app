@@ -29,9 +29,8 @@ export default (state=initialState.pazienteState, action={}) => {
     case 'FETCH_PAZIENTE_FULFILLED': {
       let paziente = {...action.payload.data};
 
-      let trattamenti=[], valutazioni=[];
+      let valutazioni=[];
       paziente.consulti.forEach(c => {
-        trattamenti.push(...c.trattamenti);
         valutazioni.push(...c.valutazioni);
       });
 
@@ -41,7 +40,6 @@ export default (state=initialState.pazienteState, action={}) => {
       return {
         ...state,
         paziente: paziente,
-        trattamenti: trattamenti,
         valutazioni: valutazioni
       }
     }

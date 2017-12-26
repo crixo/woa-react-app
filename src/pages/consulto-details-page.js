@@ -51,7 +51,7 @@ function mapStateToProps(state, ownProps) {
   const consulto = state.consultiStore.entities.find(x=>x.id === consultoId);
   const anamnesi = state.anamnesiProssimeStore.entities.find(x=>x.consultoId === consultoId);
   const esami = state.esamiStore.entities.filter(x=>x.consultoId === consultoId);
-  const trattamenti = state.pazienteStore.trattamenti.filter(x=>x.consultoId === consultoId);
+  const trattamenti = state.trattamentiStore.entities.filter(x=>x.consultoId === consultoId);
   const valutazioni = state.pazienteStore.valutazioni.filter(x=>x.consultoId === consultoId);
   
   return {
