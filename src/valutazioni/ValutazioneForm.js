@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
-import {MyDatePicker, MyTextarea, dateFromPickerParser} from '../common/FormFields';
+import { MyInput } from '../common/FormFields';
 
 const validate = (values) => {
   const errors = {};
@@ -13,7 +13,8 @@ const validate = (values) => {
   return errors;
 }
 
-class TrattamentoForm extends Component {
+
+class ValutazioneForm extends Component {
 
   componentWillMount = () => {
     this.props.initialize(this.props.entity)
@@ -21,16 +22,18 @@ class TrattamentoForm extends Component {
 
   render() {
     const { handleSubmit, pristine, submitting, loading } = this.props;
-    
+
     return (
       <Grid centered columns={2}>
         <Grid.Column>
-          <h3 style={{marginTop:"1em"}}>Trattamento</h3>
+          <h3 style={{ marginTop: "1em" }}>Valutazione</h3>
           <Form onSubmit={handleSubmit} loading={loading}>
-            <Field name="data" type="text" component={MyDatePicker} parse={dateFromPickerParser} label="Data" />  
+            <Field name="strutturale" type="text" component={MyInput} label="Strutturale" />
 
-            <Field name="descrizione" type="text" component={MyTextarea} label="Descrizione"/>
-            
+            <Field name="cranioSacrale" type="text" component={MyInput} label="Cranio Sacrale" />
+
+            <Field name="akOrtodontica" type="text" component={MyInput} label="Ak Ortodontica" />
+
             <Button primary type='submit' disabled={pristine || submitting}>Save</Button>
           </Form>
         </Grid.Column>
@@ -39,5 +42,5 @@ class TrattamentoForm extends Component {
   }
 }
 
-export default reduxForm({form: 'trattamento-form', validate})(TrattamentoForm);
+export default reduxForm({ form: 'valutazione-form', validate })(ValutazioneForm);
 

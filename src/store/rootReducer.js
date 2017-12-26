@@ -9,6 +9,7 @@ import ConsultiReducer from '../consulti/consultiReducer';
 import AnamnesiProssimeReducer from '../anamnesiProssime/anamnesiProssimeReducer';
 import EsamiReducer from '../esami/esamiReducer';
 import TrattamentiReducer from '../trattamenti/trattamentiReducer';
+import ValutazioniReducer from '../valutazioni/valutazioniReducer';
 
 configurePageParams({
   page: 'skip',
@@ -32,6 +33,7 @@ export default combineReducers({
   anamnesiProssimeStore: AnamnesiProssimeReducer,
   esamiStore: EsamiReducer,
   trattamentiStore: TrattamentiReducer,
+  valutazioniStore: ValutazioniReducer,
   uiStore: UiReducer,
   form: formReducer
 });
