@@ -1,24 +1,52 @@
-FROM node:8 as build-deps
-WORKDIR /usr/src/app
-COPY package.json yarn.lock ./
-RUN yarn
-COPY . ./
-RUN yarn build
+# FROM mhart/alpine-node
+# WORKDIR /app
+# COPY . .
+# RUN yarn run build
+# FROM node:8 as build-deps
+# WORKDIR /usr/src/app
+# COPY package.json yarn.lock ./
+# RUN yarn
+# COPY . ./
+# RUN yarn build
 
-FROM node:8
+FROM mhart/alpine-node:8
 RUN yarn global add serve
 WORKDIR /app
-COPY --from=build-deps /usr/src/app/build .
-ADD ./run.sh /app
+#COPY — from=build-deps /app/build .
+#COPY —-from=0 /usr/src/app/build .
+COPY ./build .
+#ENTRYPOINT ["/bin/sh"]
 #CMD [“serve”, “-p 80”, “-s”, “.”]
+CMD serve -p 80 -s .
 
-#CMD serve -s build
-#EXPOSE 80
+# docker build -t webprofessor/woa-react-app:1.0 .
+#docker run -dit -p 8002:80 --name woa-react-app webprofessor/woa-react-app:1.0
+#docker container run -it webprofessor/woa-react-app:1.0 bash
+#docker run -it webprofessor/woa-react-app:1.0 /bin/sh
 
-EXPOSE 3000
-EXPOSE 35729
+###################################################
+# FROM node:8 as build-deps
+# WORKDIR /usr/src/app
+# COPY package.json yarn.lock ./
+# RUN yarn
+# COPY . ./
+# RUN yarn build
 
-ENTRYPOINT ["/bin/bash", "/app/run.sh"]
+# FROM node:8
+# RUN yarn global add serve
+# WORKDIR /app
+# COPY --from=build-deps /usr/src/app/build .
+# ADD ./run.sh /app
+# #CMD [“serve”, “-p 80”, “-s”, “.”]
+
+# #CMD serve -s build
+# #EXPOSE 80
+
+# EXPOSE 3000
+# EXPOSE 35729
+
+# ENTRYPOINT ["/bin/bash", "/app/run.sh"]
+###################################################
 #ENTRYPOINT ["/bin/bash"]
 #CMD [“serve -p 3000 -s .”]
 #CMD [“serve”, “-p 80”, “-s”, “.”]
