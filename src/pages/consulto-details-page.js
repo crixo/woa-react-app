@@ -6,12 +6,12 @@ import TrattamentiList from '../trattamenti/TrattamentiList';
 import ValutazioniList from '../valutazioni/ValutazioniList';
 import AnamnesiProssima from '../anamnesiProssime/AnamnesiProssimaDetails';
 import PazienteDetails from '../pazienti/PazienteDetails';
-import * as actions from '../pazienti/pazientiActions';
+import * as actions from '../consulti/consultiActions';
 import { bindActionCreators } from 'redux';
 
 class ConsultoDetailsPage extends Component {
   componentWillMount() {
-    this.props.actions.setActiveConsultoId(this.props.consulto.id);
+    this.props.actions.setActiveConsulto(this.props.consulto.id);
   }
 
   render() {

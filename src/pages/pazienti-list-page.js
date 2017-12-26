@@ -1,11 +1,13 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import PazientiList from '../pazienti/PazientiList';
-import * as actions from '../pazienti/pazientiActions';
+import {resetPaziente} from '../pazienti/pazientiActions';
+import {resetActiveConsulto} from '../consulti/consultiActions';
 
 class PazientiListPage extends Component {
   componentWillMount() {
     this.props.resetPaziente();
+    this.props.resetActiveConsulto();
   }
 
   render() {
@@ -18,10 +20,6 @@ class PazientiListPage extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    contact: 'test'
-  }
-}
 
-export default connect(  mapStateToProps, { resetPaziente: actions.resetPaziente })(PazientiListPage);
+
+export default connect(  undefined, { resetPaziente, resetActiveConsulto })(PazientiListPage);

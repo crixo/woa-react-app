@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import { SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
 import { newPaziente, savePaziente, fetchPaziente} from '../pazienti/pazientiActions';
+import { resetActiveConsulto } from '../consulti/consultiActions';
 import PazienteForm from '../pazienti/PazienteForm';
 
 class PazienteFormPage extends Component {
@@ -21,6 +22,7 @@ class PazienteFormPage extends Component {
       this.props.fetchPaziente(id)
     } else {
       this.props.newPaziente();
+      this.props.resetActiveConsulto();
     }
   }
 
@@ -55,4 +57,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {newPaziente, savePaziente, fetchPaziente})(PazienteFormPage);
+export default connect(mapStateToProps, {newPaziente, savePaziente, fetchPaziente, resetActiveConsulto})(PazienteFormPage);

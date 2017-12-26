@@ -1,4 +1,5 @@
 import initialState from '../store/initialState';
+import { initialize } from 'redux-form';
 
 
 export default (state=initialState.consultiState, action={}) => {
@@ -41,6 +42,13 @@ export default (state=initialState.consultiState, action={}) => {
         activeConsultoId: action.payload
       }
     }    
+
+    case 'CONSULTO_DEACTIVE': {
+      return {
+        ...state,
+        activeConsultoId: initialState.consultiState.activeConsultoId
+      }
+    }      
 
     case 'SAVE_CONSULTO_PENDING': {
       return {

@@ -69,15 +69,6 @@ export function fetchPazienti(pageInfo) {
     }
   }
 
-  export function setActiveConsultoId(consultoId) {
-    return dispatch => {
-      return dispatch({
-        type: 'CONSULTO_ACTIVE',
-        payload: consultoId
-      })
-    }
-  }
-
   export function fetchProvince() {
     return dispatch => {
       return dispatch({
