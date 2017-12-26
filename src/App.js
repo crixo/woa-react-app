@@ -27,7 +27,17 @@ class App extends Component {
     this.props.fetchTipiEsame();
   }
 
+
+
   render() {
+    const pazienteLink = this.props.pazienteId !== undefined?
+      <NavLink className="item" activeClassName="active" to={`/paziente/details/${this.props.pazienteId}`}>Paziente</NavLink>
+      : <a className="item disabled">Paziente</a>;
+
+      const consultoLink = this.props.consultoId !== undefined?
+      <NavLink className="item" activeClassName="active" to={`/consulto/details/${this.props.consultoId}`}>Consulto</NavLink>
+      : <a className="item disabled">Consulto</a>;      
+
     return (
       <Container>
         <div className="ui four item menu">
@@ -37,12 +47,8 @@ class App extends Component {
           <NavLink className="item" activeClassName="active" exact to="/paziente/new">
             Crea Paziente
           </NavLink>
-          <NavLink className={`item ${this.props.pazienteStatus}`} activeClassName="active" to={`/paziente/details/${this.props.pazienteId}`}>
-            Paziente
-          </NavLink>
-          <NavLink className={`item ${this.props.consultoStatus}`} activeClassName="active" to={`/consulto/details/${this.props.consultoId}`}>
-            Consulto
-          </NavLink>
+          {pazienteLink}
+          {consultoLink}
         </div>
 
         <Route exact path="/" component={PazientiListPage} />
@@ -79,10 +85,7 @@ function mapStateToProps(state) {
 
   return {
     pazienteId: pazienteId,
-    pazienteStatus: pazienteId !== undefined ? "enabled" : "disabled",
-    consultoId: consultoId,
-    consultoStatus: consultoId !== undefined ? "enabled" : "disabled"
-
+    consultoId: consultoId
   }
 }
 
