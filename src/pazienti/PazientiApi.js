@@ -3,8 +3,9 @@ import { client } from '../apiClient';
 class PazientiApi {
 
     static getPazientiPaginated(filters) {
-        let skip = filters.skip - 1;
-        let url = `/api/pazienti/page/${skip}/${filters.limit}`;
+        const limit = filters.pageSize;
+        let skip = (filters.page-1) * limit;
+        let url = `/api/pazienti/page/${skip}/${limit}`;
         if (filters.filter) {
             url += `?filter=${filters.filter}`;
         }

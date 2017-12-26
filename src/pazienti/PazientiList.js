@@ -5,14 +5,6 @@ import '../styles/scss/pazienti-list.css'
 import GridFilter from './GridFilter'
 import { Link } from 'react-router-dom'
 import LocalDate from '../common/LocalDate'
-//import FontAwesome from 'react-fontawesome'
- 
-// const activeColumn = paziente => {
-//     const icon = paziente.nome.indexOf('a') ? 'check' : 'ban'
-//     return (
-//       <FontAwesome name={icon} />
-//     )
-//   }
 
 const headers = [
     {
@@ -23,6 +15,7 @@ const headers = [
     {
         field: 'cognome',
         text: 'Cognome',
+        sortable: false,
         format: p => (
             <Link to={`/paziente/details/${p.id}`}>{p.cognome}</Link>
         )
@@ -52,7 +45,7 @@ export default function PazientiList() {
         <section>
             <GridFilter />
             <Paginator listId="pazienti"  />
-            <DataTable listId="pazienti" headers={headers} />
+            <DataTable listId="pazienti" className="ui celled striped table" headers={headers} />
         </section>
     )
 }

@@ -12,8 +12,8 @@ import TrattamentiReducer from '../trattamenti/trattamentiReducer';
 import ValutazioniReducer from '../valutazioni/valutazioniReducer';
 
 configurePageParams({
-  page: 'skip',
-  perPage: 'limit',
+  // page: 'skip',
+  // perPage: 'limit',
   results: 'records',
   totalCount: 'totalRecords',
   sortReverse: true
