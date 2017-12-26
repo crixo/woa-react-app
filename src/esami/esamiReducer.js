@@ -3,6 +3,20 @@ import initialState from '../store/initialState';
 export default (state=initialState.anamnesiProssimeState, action={}) => {
   switch (action.type) {
 
+    case 'FETCH_TIPI_ESAME_PENDING': {
+      return {
+        ...state,
+        tipi: []
+      }
+    }  
+    
+    case 'FETCH_TIPI_ESAME_FULFILLED': {
+      return {
+        ...state,
+        tipi: action.payload.data.map(x=>({value:x.id, text:x.descrizione})),
+      }
+    }       
+
     case 'PAZIENTE_RESET': {
       return {
         ...state,
@@ -20,39 +34,37 @@ export default (state=initialState.anamnesiProssimeState, action={}) => {
     case 'FETCH_PAZIENTE_FULFILLED': {
       const paziente = action.payload.data;
 
-      let anamnesiProssime = [];
+      let esami = [];
       paziente.consulti.forEach(c => {
-        if(c.anamnesiProssima !== undefined){
-          anamnesiProssime.push({...c.anamnesiProssima});
-        }
+        esami.push(...c.esami);
       });
 
       const newState = {
-        ...initialState.anamnesiProssimeStore,
-        entities: anamnesiProssime
+        ...initialState.esamiState,
+        entities: esami
       };
 
       return newState;
     }    
 
 
-    case 'SAVE_ANAMNESI_PROSSIMA_PENDING': {
+    case 'SAVE_ESAME_PENDING': {
       return {
         ...state
       }
     }  
 
-    case 'SAVE_ANAMNESI_PROSSIMA_FULFILLED': {
+    case 'SAVE_ESAME_FULFILLED': {
       const anamesi = {...action.payload.data};
       return {
         ...state,
         entities: [
-          ...state.entities.filter(x => x.consultoId !== action.payload.data.consultoId), 
+          ...state.entities.filter(x => x.id !== action.payload.data.id), 
           anamesi
         ]
       }
     }  
-    case 'SAVE_ANAMNESI_PROSSIMA_REJECTED': {
+    case 'SAVE_ESAME_REJECTED': {
       //const errors = { global: 'SAVE_ANAMNESI_PROSSIMA_REJECTED'};
       return {
         ...state

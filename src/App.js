@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { NavLink, Route, withRouter } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
+
 import PazientiListPage from './pages/pazienti-list-page';
 import PazienteFormPage from './pages/paziente-form-page';
 import PazienteDetailsPage from './pages/paziente-details-page';
@@ -9,8 +10,11 @@ import ConsultoDetailsPage from './pages/consulto-details-page';
 import ConsultoFormPage from './pages/consulto-form-page';
 import AnamnesiRemotaFormPage from './pages/anamnesi-remota-form-page';
 import AnamnesiProssimaFormPage from './pages/anamnesi-prossima-form-page';
+import EsameFormPage from './pages/esame-form-page';
+
 import { fetchProvince } from './pazienti/pazientiActions';
 import { fetchTipiAnamnesiRemote } from './anamnesiRemote/anamnesiRemoteActions';
+import { fetchTipiEsame} from './esami/esamiActions';
 
 class App extends Component {
   constructor(props, context) {
@@ -18,6 +22,7 @@ class App extends Component {
 
     this.props.fetchProvince();
     this.props.fetchTipiAnamnesiRemote();
+    this.props.fetchTipiEsame();
   }
 
   render() {
@@ -51,7 +56,10 @@ class App extends Component {
         <Route path="/consulto/edit/:id" component={ConsultoFormPage}/>
 
         <Route path="/anamnesi-prossima/new" component={AnamnesiProssimaFormPage}/>
-        <Route path="/anamnesi-prossima/edit/:id" component={AnamnesiProssimaFormPage}/>        
+        <Route path="/anamnesi-prossima/edit/:id" component={AnamnesiProssimaFormPage}/>   
+
+        <Route path="/esame/new" component={EsameFormPage}/>
+        <Route path="/esame/edit/:id" component={EsameFormPage}/>       
       </Container>
     );
   }
@@ -70,4 +78,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, {fetchProvince, fetchTipiAnamnesiRemote})(App));
+export default withRouter(connect(mapStateToProps, {fetchProvince, fetchTipiAnamnesiRemote, fetchTipiEsame})(App));

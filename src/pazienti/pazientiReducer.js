@@ -29,23 +29,11 @@ export default (state=initialState.pazienteState, action={}) => {
     case 'FETCH_PAZIENTE_FULFILLED': {
       let paziente = {...action.payload.data};
 
-      let consulti=[], esami=[], trattamenti=[], valutazioni=[], anamnesiProssime = [];
-      paziente.consulti.forEach(consulto => {
-        let c = {...consulto};
-        esami.push(...c.esami);
+      let trattamenti=[], valutazioni=[];
+      paziente.consulti.forEach(c => {
         trattamenti.push(...c.trattamenti);
         valutazioni.push(...c.valutazioni);
-        if(c.anamnesiProssima !== undefined){
-          anamnesiProssime.push(c.anamnesiProssima);
-        }
-        delete c.esami;
-        delete c.trattamenti;
-        delete c.valutazioni;
-        delete c.anamnesiProssima;
-        consulti.push(c);
       });
-
-      const anamnesiRemote = [...paziente.anamnesiRemote];
 
       delete paziente.consulti;
       delete paziente.anamnesiRemote;
@@ -53,10 +41,6 @@ export default (state=initialState.pazienteState, action={}) => {
       return {
         ...state,
         paziente: paziente,
-        anamnesiRemote: anamnesiRemote,
-        consulti: consulti,
-        anamnesiProssime: anamnesiProssime,
-        esami: esami,
         trattamenti: trattamenti,
         valutazioni: valutazioni
       }

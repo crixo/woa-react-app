@@ -27,6 +27,7 @@ export default function configureStore(initialState) {
       anamnesiRemoteStore: store.getState().anamnesiRemoteStore,
       consultiStore: store.getState().consultiStore,
       anamnesiProssimeStore: store.getState().anamnesiProssimeStore,
+      esamiStore: store.getState().esamiStore,
     })
   }, 1000))
 

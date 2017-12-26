@@ -31,7 +31,7 @@ class ConsultoDetailsPage extends Component {
                   <AnamnesiProssima anamnesi={this.props.anamnesiProssima} />
                 </div>
                 <div className="seven wide column">
-                  <EsamiList esami={this.props.esami} />
+                  <EsamiList esami={this.props.esami} tipi={this.props.tipiEsame}/>
                   <TrattamentiList trattamenti={this.props.trattamenti} />
                   <ValutazioniList valutazioni={this.props.valutazioni} />
                 </div>
@@ -50,16 +50,15 @@ function mapStateToProps(state, ownProps) {
   const paziente = state.pazienteStore.paziente;
   const consulto = state.consultiStore.entities.find(x=>x.id === consultoId);
   const anamnesi = state.anamnesiProssimeStore.entities.find(x=>x.consultoId === consultoId);
-  const esami = state.pazienteStore.esami.filter(x=>x.consultoId === consultoId);
+  const esami = state.esamiStore.entities.filter(x=>x.consultoId === consultoId);
   const trattamenti = state.pazienteStore.trattamenti.filter(x=>x.consultoId === consultoId);
   const valutazioni = state.pazienteStore.valutazioni.filter(x=>x.consultoId === consultoId);
   
-console.log(typeof(consulto.id));
   return {
     paziente: paziente,
     consulto: consulto,
     anamnesiProssima: anamnesi===undefined? {} : anamnesi,
-    esami: esami,
+    esami: esami, tipiEsame: state.esamiStore.tipi,
     trattamenti: trattamenti,
     valutazioni: valutazioni,
 

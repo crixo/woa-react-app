@@ -6,6 +6,7 @@ import PazientiReducer from '../pazienti/pazientiReducer'
 import AnamnesiRemoteReducer from '../anamnesiRemote/anamnesiRemoteReducer'
 import ConsultiReducer from '../consulti/consultiReducer'
 import AnamnesiProssimeReducer from '../anamnesiProssime/anamnesiProssimeReducer'
+import EsamiReducer from '../esami/esamiReducer'
 import UiReducer from './uiReducer'
 
 configurePageParams({
@@ -28,6 +29,7 @@ export default combineReducers({
   anamnesiRemoteStore: AnamnesiRemoteReducer,
   consultiStore: ConsultiReducer,
   anamnesiProssimeStore: AnamnesiProssimeReducer,
+  esamiStore: EsamiReducer,
   uiStore: UiReducer,
   form: formReducer
 });

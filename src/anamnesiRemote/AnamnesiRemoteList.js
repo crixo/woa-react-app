@@ -31,7 +31,7 @@ export default function AnamnesiRemoteList({anamnesi, tipi}) {
                     <td><LocalDate value={x.data} /></td>
                     <td>{ findDescr(x.tipoId, tipi) }</td>
                     <td>{x.descrizione}</td>
-                    <td><Link to={`/anamnesi-remota/edit/${x.id}`}>Show</Link></td>
+                    <td><Link className="ui icon button" to={`/anamnesi-remota/edit/${x.id}`}><i className="edit icon"></i></Link></td>
                 </tr>
             )}
             </tbody>

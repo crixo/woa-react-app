@@ -19,7 +19,7 @@ export default (state=initialState.consultiState, action={}) => {
     }
     
     case 'FETCH_PAZIENTE_FULFILLED': {
-      let paziente = {...action.payload.data};
+      const paziente = action.payload.data;
       let consulti=[];
       paziente.consulti.forEach(consulto => {
         let c = {...consulto};
