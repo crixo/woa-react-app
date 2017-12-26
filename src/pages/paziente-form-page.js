@@ -14,7 +14,7 @@ class PazienteFormPage extends Component {
       redirect: false
     };
 
-    if(this.props.province.length == 0){
+    if(this.props.province.length === 0){
       this.props.fetchProvince();
     }
   }

@@ -4,6 +4,8 @@ import { reducer as formReducer } from 'redux-form';
 import { fetchPazienti } from '../pazienti/pazientiActions'
 import PazientiReducer from '../pazienti/pazientiReducer'
 import AnamnesiRemoteReducer from '../anamnesiRemote/anamnesiRemoteReducer'
+import ConsultiReducer from '../consulti/consultiReducer'
+import AnamnesiProssimeReducer from '../anamnesiProssime/anamnesiProssimeReducer'
 import UiReducer from './uiReducer'
 
 configurePageParams({
@@ -24,6 +26,8 @@ export default combineReducers({
   }),
   pazienteStore: PazientiReducer,
   anamnesiRemoteStore: AnamnesiRemoteReducer,
+  consultiStore: ConsultiReducer,
+  anamnesiProssimeStore: AnamnesiProssimeReducer,
   uiStore: UiReducer,
   form: formReducer
 });

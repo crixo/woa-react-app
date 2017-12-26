@@ -43,7 +43,7 @@ function mapStateToProps(state, ownProps) {
   return {
     paziente: state.pazienteStore.paziente,
     anamnesiRemote: state.anamnesiRemoteStore.entities,
-    consulti: state.pazienteStore.consulti
+    consulti: state.consultiStore.entities
   };
 }
 

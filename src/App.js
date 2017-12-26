@@ -50,7 +50,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   const pazienteId = state.pazienteStore.paziente.id;
-  const consultoId = state.pazienteStore.activeConsultoId;
+  const consultoId = state.consultiStore.activeConsultoId;
   
   return {
     pazienteId: pazienteId,

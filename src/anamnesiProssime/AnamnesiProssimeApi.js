@@ -4,10 +4,10 @@ class AnamnesiProssimeApi {
 
     static save(entity) {
         const url = '/api/anamnesi-prossime';
-        if(entity.id===undefined){
+        if(entity.isNew){
             return client.post(url, entity);
         }
-        return client.put(`${url}/${entity.id}`, entity);
+        return client.put(`${url}/${entity.consultoId}`, entity);
     } 
 }
 

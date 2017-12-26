@@ -1,8 +1,8 @@
 export default {
   paziente: {},
   anamnesiRemote:{tipi:[], entities:[]},
-  consulti: [],
-  anamnesiProssime:[],
+  consultiStore:{activeConsultoId:undefined, entities:[]},
+  anamnesiProssimeStore:{entities:[]},
   esami:[],
   trattamenti:[],
   valutazioni:[],

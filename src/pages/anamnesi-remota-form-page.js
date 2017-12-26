@@ -15,7 +15,7 @@ class AnamnesiRemotaFormPage extends Component {
       redirect: false
     };
 
-    if(this.props.tipiAnamnesi.length == 0){
+    if(this.props.tipiAnamnesi.length === 0){
       this.props.fetchTipi();
     }
   }

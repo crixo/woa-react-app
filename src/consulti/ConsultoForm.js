@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
-import {MyTextarea, MyDatePicker, MySelect, dateFromPickerParser} from '../common/FormFields';
+import {MyTextarea, MyDatePicker, dateFromPickerParser} from '../common/FormFields';
 
 const validate = (values) => {
   const errors = {};

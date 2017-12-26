@@ -54,8 +54,8 @@ function mapStateToProps(state, ownProps) {
   const { id } = ownProps.match.params;
   const anamnesiId = parseInt(id, 10);
   const paziente = state.pazienteStore.paziente;
-  const activeConsultoId = state.pazienteStore.activeConsultoId;
-  const anamnesi = id? state.pazienteStore.anamnesiProssime.find(x=>x.consultoId === anamnesiId) : {pazienteId: paziente.id, consultoId: activeConsultoId};
+  const activeConsultoId = state.consultiStore.activeConsultoId;
+  const anamnesi = id? state.anamnesiProssimeStore.entities.find(x=>x.consultoId === anamnesiId) : {pazienteId: paziente.id, consultoId: activeConsultoId, isNew: true};
   console.log(anamnesi);
   return {
     paziente: paziente,

@@ -51,7 +51,7 @@ export default (state=initialState.anamnesiRemote, action={}) => {
     }  
 
     case 'SAVE_ANAMNESI_REMOTA_REJECTED': {
-      const errors = { global: 'SAVE_ANAMNESI_REMOTA_REJECTED'};
+      //const errors = { global: 'SAVE_ANAMNESI_REMOTA_REJECTED'};
       return {
         ...state
       }

@@ -25,7 +25,8 @@ export default (state=initialState, action={}) => {
       let paziente = {...action.payload.data};
 
       let consulti=[], esami=[], trattamenti=[], valutazioni=[], anamnesiProssime = [];
-      paziente.consulti.forEach(c => {
+      paziente.consulti.forEach(consulto => {
+        let c = {...consulto};
         esami.push(...c.esami);
         trattamenti.push(...c.trattamenti);
         valutazioni.push(...c.valutazioni);
@@ -109,12 +110,12 @@ export default (state=initialState, action={}) => {
       }
     }   
 
-    case 'CONSULTO_ACTIVE': {
-      return {
-        ...state,
-        activeConsultoId: action.payload
-      }
-    }
+    // case 'CONSULTO_ACTIVE': {
+    //   return {
+    //     ...state,
+    //     activeConsultoId: action.payload
+    //   }
+    // }
 
     case 'FETCH_PROVINCE_PENDING': {
       return {
@@ -174,30 +175,30 @@ export default (state=initialState, action={}) => {
     // }  
     
 
-    case 'SAVE_ANAMNESI_PROSSIMA_PENDING': {
-      return {
-        ...state,
-        loading: true
-      }
-    }  
+    // case 'SAVE_ANAMNESI_PROSSIMA_PENDING': {
+    //   return {
+    //     ...state,
+    //     loading: true
+    //   }
+    // }  
 
-    case 'SAVE_ANAMNESI_PROSSIMA_FULFILLED': {
-      console.log(action.payload.data);
-      const anamesi = action.payload.data;
-      return {
-        ...state,
-        anamnesiProssime: [...state.anamnesiProssime.filter(x => x.consultoId !== action.payload.data.consultoId), Object.assign({}, anamesi)],
-        loading: false
-      }
-    }  
-    case 'SAVE_ANAMNESI_PROSSIMA_REJECTED': {
-      const errors = { global: 'SAVE_ANAMNESI_PROSSIMA_REJECTED'};
-      return {
-        ...state,
-        errors: errors,
-        loading: false
-      }
-    }      
+    // case 'SAVE_ANAMNESI_PROSSIMA_FULFILLED': {
+    //   console.log(action.payload.data);
+    //   const anamesi = action.payload.data;
+    //   return {
+    //     ...state,
+    //     anamnesiProssime: [...state.anamnesiProssime.filter(x => x.consultoId !== action.payload.data.consultoId), Object.assign({}, anamesi)],
+    //     loading: false
+    //   }
+    // }  
+    // case 'SAVE_ANAMNESI_PROSSIMA_REJECTED': {
+    //   const errors = { global: 'SAVE_ANAMNESI_PROSSIMA_REJECTED'};
+    //   return {
+    //     ...state,
+    //     errors: errors,
+    //     loading: false
+    //   }
+    // }      
 
     default:
       return state;

@@ -25,6 +25,8 @@ export default function configureStore(initialState) {
     saveState({
       pazienteStore: store.getState().pazienteStore,
       anamnesiRemoteStore: store.getState().anamnesiRemoteStore,
+      consultiStore: store.getState().consultiStore,
+      anamnesiProssimeStore: store.getState().anamnesiProssimeStore,
     })
   }, 1000))
 
