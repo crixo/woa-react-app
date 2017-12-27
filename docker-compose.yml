@@ -1,0 +1,27 @@
+version: "3"
+services:
+  frontend:
+    # replace username/repo:tag with your name and image details
+    image: webprofessor/woa-react-app:1.0
+    container_name: woa-react-app-compose
+    ports:
+      - "8011:80"
+    links:
+      - backend
+    # environment:
+    #   - REACT_APP_BACKEND_BASE_URL=http://localhost:8010
+    restart: always
+    networks:
+      - webnet
+  backend:
+    image: cloud.canister.io:5000/crixo/woa-api:1.0
+    container_name: woa-api-compose
+    ports:
+      - "8010:80"
+    volumes:
+      - "/Users/cristiano/Lavori/woa/woa-docker/woa-api:/woa"
+    restart: always
+    networks:
+      - webnet
+networks:
+  webnet:
