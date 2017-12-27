@@ -23,6 +23,7 @@ CMD serve -p 80 -s .
 #docker run -dit -p 8002:80 --name woa-react-app webprofessor/woa-react-app:1.0
 #docker container run -it webprofessor/woa-react-app:1.0 bash
 #docker run -it webprofessor/woa-react-app:1.0 /bin/sh
+#docker tag webprofessor/woa-react-app:1.0 cloud.canister.io:5000/crixo/woa-react-app:1.0
 
 ###################################################
 # FROM node:8 as build-deps
