@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+# Sample version
+
+enjoy a [sample app](https://woa-react-app.herokuapp.com/) running on heroku using a [sample backend version](https://woa-api-sample.herokuapp.com) also hosted on heroku.
+
+heroku apps have been deployed using [heroku docker registry deployment option](https://devcenter.heroku.com/articles/container-registry-and-runtime)
+```
+docker push registry.heroku.com/woa-api-sample/web
+
+docker push registry.heroku.com/woa-react-app/web
+
+```
+
 ## How to run the build
 
 - install [docker engine](https://www.docker.com/get-docker)
