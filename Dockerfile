@@ -2,18 +2,18 @@
 # WORKDIR /app
 # COPY . .
 # RUN yarn run build
-# FROM node:8 as build
-# WORKDIR /usr/src/app
-# COPY package.json yarn.lock ./
-# RUN yarn
-# COPY . ./
-# RUN REACT_APP_BACKEND_BASE_URL=http://localhost:8010 yarn build
+FROM node:8 as build
+WORKDIR /usr/src/app
+COPY package.json yarn.lock ./
+RUN yarn
+COPY . ./
+RUN REACT_APP_BACKEND_BASE_URL=http://localhost:8010 yarn build
 
 FROM mhart/alpine-node:8
 RUN yarn global add serve
 WORKDIR /app
-#COPY —-from=build /usr/src/app/build .
-COPY ./build .
+COPY --from=build /usr/src/app/build .
+#COPY ./build .
 #ENTRYPOINT ["/bin/sh"]
 #CMD [“serve”, “-p 80”, “-s”, “.”]
 CMD serve -p 80 -s .
