@@ -1,8 +1,10 @@
 # WOA React App
 
+[![Build Status](https://travis-ci.org/crixo/woa-react-app.svg?branch=master)](https://travis-ci.org/crixo/woa-react-app)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-# Sample version
+## Sample version
 
 enjoy a [sample app](https://woa-react-app.herokuapp.com/) running on heroku using a [sample backend version](https://woa-api-sample.herokuapp.com) also hosted on heroku.
 
