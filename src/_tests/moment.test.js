@@ -1,7 +1,7 @@
 //https://github.com/facebookincubator/create-react-app/issues/871
 //brew install watchman
 import moment from 'moment';
-
+import 'moment/locale/it';
 // var itLocale = require('moment/locale/it');
 // moment.updateLocale('it', itLocale);
 
