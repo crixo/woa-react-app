@@ -89,4 +89,5 @@ function mapStateToProps(state) {
   }
 }
 
+//https://egghead.io/lessons/javascript-redux-using-withrouter-to-inject-the-params-into-connected-components
 export default withRouter(connect(mapStateToProps, { fetchProvince, fetchTipiAnamnesiRemote, fetchTipiEsame })(App));
