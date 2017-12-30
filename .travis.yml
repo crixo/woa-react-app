@@ -11,15 +11,19 @@ node_js:
 #     recipients:
 #       - cri@webprofessor.it
 cache:
+  yarn: true
   directories:
     - node_modules
 install:
   - yarn
 before_script:
   - export CI=false
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: yarn build
-  on:
-    branch: ["master"]
+  - yarn build
+script:
+  - yarn test
+# deploy:
+#   skip_cleanup: true
+#   provider: script
+#   script: yarn build
+#   on:
+#     branch: ["master"]
