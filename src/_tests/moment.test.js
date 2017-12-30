@@ -38,11 +38,11 @@ it('should convert iso to local', () => {
 it('should convert to iso string date only', () => {
   //const dateAsIsoString = '2017-12-10T00:00:00.000Z';
   //const localString = 'Tue Jan 07 1936 00:00:00 GMT+0100 (CET)';
-  const localString = '1936-01-07T00:00:00+01:00';
+  const localString = '1936-01-07T00:00:00+03:00';
   const dateAsMoment = moment(localString);
   const expected = dateAsMoment.format('YYYY-MM-DD') + 'T00:00:00.000Z';//Tue Jan 07 1936 00:00:00 GMT+0100 (CET)
   console.log(dateAsMoment.toISOString());
   console.log(expected);
-  expect(expected).toEqual('1936-01-07T00:00:00.000Z');
+  expect(expected).toEqual('1936-01-06T00:00:00.000Z');
 });
 
