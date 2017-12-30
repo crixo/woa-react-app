@@ -14,12 +14,12 @@ cache:
   directories:
     - node_modules
 install:
-  - npm install
+  - yarn
 before_script:
   - export CI=false
 deploy:
   skip_cleanup: true
   provider: script
-  script: npm run build
+  script: yarn build
   on:
     branch: ["master"]
