@@ -2,30 +2,23 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  # LTS version
-  - "8.0"
-# notifications:
-#   email:
-#     on_success: change # only if status change from fail to success
-#     on_failure: always # if there is a fail
-#     recipients:
-#       - cri@webprofessor.it
+- '8.0'
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
-  - secure: GqDedinxS+/MRghvjnS7Li9Tfpk7pEk9mrDXlwq8hqJqURrUeS9tj5ljrJuwkaUGU1mtSoX9BroSEI/HudlIdQoeIrHxMNIqVZC1cbVZ/o3JDSN4mJKIzdUcRrUUT5zNibdqm4xjLwrk68bPse2LMTewH9LocS9JqQoCYqA77dLGVN+lGCrJ1S/vKPo3CXcBX2oMa3GAv0FcsgWhfXNzhypsZjuU81KGsPwfpv7WRlyZC1mgw5MENUtZbwgH8Q7EFxuok6rduFX5dIEfNqvK/iKJjmAtcru+K/JdNGi+1izi21GK0gBC6twb5gXAGyhWCegTQwVp5JUzlFgb7n8QPnzHbURM7GFg3LtCZJQuyU2TEOklm2LclbDUiqsYvDPTJXRrWXzWejSxSXfdBiGSu1Tb5Q6jMm1AKWUTEI4Z0SwXa2jtGhfZdwwCZhqMHJw4gHnzWp+H0ouOkoXAGdTVIad530m1PLSO1mn05llCAEOwiagLQml3yD4AqdOc5Fk0xDaPev6zXsfRbCcLHZ42zVB12MMdmaaKvGHo8LbLFex5HamjEXoBODiPB0Px4em4gnv+z0zlaTOPvrnIV6cUoQVdTtMvAz452xLNEPkqZiGexswsyTZHnaowMnu9NkLeNBqhD1MylT7y6zyGAdPx1wti+EwjA9u9vL46tCDsg2M=
-  - secure: s3oI7Fu2jNKrqfIXhnGEaTg2Ke84LGWJRBkpXPc7tR6JI2NHIpRzzNQM+eXaK2ea2PgoTTFWBg9kWBVnB3+y7H5wNjVZC9Lb81Kf5wyG0ndS8dHwv6+OA5k9jnGxpo/wwL/5dP0bXIpcl16qbDuYWLIK7cu36QTmrBxouRJr561ZCyaA4xGrf8zIB5uJ7bSyGKEutsPcEDj7zrjrDd3h9MHbk1eYCxBfQtGrj044jKWwKnZ6WDIMx+LppBY0XWBStRtBK1rK2JtgD7q1PNKKbI/l09kleIInUaW2kojlYCThuFD7m/++tuz2JgSgR/uxiLYifrJvUsRBi8C9R7Fp5Sb+RBAvPLCZYSAuxMkHO8diQIvOjI1y/37Sky+ZCexytAotxH1M35jg/uuYKRxHzJY58PS0NOUBsxVZkgx7DACVbm+I/JcSUWhBEDE+dBMd2Yts5ivWclRfDW1FdTe1UN3z2vJzRHgFgUG/PCDhVa94qvFcIvqddhSO9mLhyndNNdHZqrGUQsZGQM6xwfecf0KejTJQnxG6TtuapK2ai6HkVAjDScCVoG8wpRbmja9Z6hg5QEvBAOng97+Exllu12ygBYUMPYCzepAumML85j+30+fj4OtbMEShkhfQ3mEW6mKq9AkLOni3M3oD6bIUscSD/Tt10hsmKeZMfF1hULI=
+  - secure: IWikx4TFjPGihBagOVkgqUxslyi181Wak+Z3zGLo3VUIobe/b8WGVz7w3xDaNBmr+H7nuJPOUZg4IP2OkCQYhoxRyymi5pSl4CAI+UU2m0ilMLph1jYH7VK01maIcJz6Yq1ogSgP1KuYgBd/UabOWOivVS1Xa4VUo60y91xr8bbhGI7Iva9OSa21kUYDjum87mUHsAs1UZhc9AKZwIW7gjKctfEhZTdAe/uyKDeoxFc2F3QAe1XuB6YmZpNnEIs9MNyE9CwI8uV/rtgJOoFymKDwz8p+2e8pq6HJi4KkAtlKzkdh8Kd9c2UVWA9dlhpuzQ8FoLUPJy4DD5o3iq6ImPJ34RSjPUkP6EB6TFrg8E6LFSZpjaYgkT31OPgg/Ria11LMXzfLLYLHeMEe2m5CHjPcZXAScb4HD6lDGJvyf17Atap5oqTRwWYytj3zvJlFTSksgkLAfeEhxG45UqEY4AqdOWEXwzNsekOO+1E0a6GAfll7sB8f1KBbvGMKPwTdo3jY4DMCoBP8Cur1q6Y/ErtBLHX0Lv/WYmr7Iev6g6O4vuQxEHzEAroO1jCPS/obRLkoZwS4aP4KqkMMpnlcI5o3183OAwbxApKtp4+4QktRT9sCbPxzprm++dRjfgbBSSTYGntBeFMhiumfFC6JNzIr3WCpKtjgb6eAzM2xmrI=
+  - secure: gUbvdv10j7jKImUEXU+gE7VCoxrxBBl4+VIFgKWSKInuusHuQZKBpMHDZrEiSzmqDzRobru9eyX+AsFLu9v/tAS38m8WtOd7T3/T4h4/STyna6Qk7Nz9M8/wm1EJUiJODin0fKZxs1xzQh4UnsMZ8MX2AmF0ITdEtFd/CXW/orIAEbZdw6kI4L+nmyaRbz7yB6kqQdW+mprH3QJxW2YoTuQh2j6MOOsstblnIfrWnSLzVliQUYnZCKAjqb3EGdeTfSD558+UE+6ASlPPwGJ+mrswMjQ4cwllH9BjRTZjdOFNKFt9YmGLFWtyh4Jo7yTEiyOp4YNz6rFo07fP5/VPuCz91RiXwbkC38o7dfLbnHhTqYDrRNhOe2t8ReISIbfXpTiGXyMVR55uPRWoI7Ht0dYeD5XrA50v47J1AXyPo8wZryZiIm2u9NPKJF6WmaZgekHvSYAE5NCFPS+VOrDsz4AdWLkupknlQXCPvPC4NZkAmaJ0SwENS02+Ay33qrxJSluCxYM1Pl91WRhupRM7un+x3Vzj3ES+Q1z184HvPwkCt8z9UZPGXfdpRUsvH77tBHm2i9YxBjX27MOmUkDKM1pLdBvflEDJtG6CNJhmGI0X/5aNZt2LSlj/uBuwOYDz/hWxtrkQ0HlXxjcrWQm0J3nfaSlz9wL4ewypS1wZGrc=
 cache:
   yarn: true
   directories:
-    - node_modules
+  - node_modules
 install:
-  - yarn
+- yarn
 before_script:
-  - export CI=false
-  - yarn build
+- export CI=false
+- yarn build
 script:
-  - yarn test
+- yarn test
 after_success:
 - export REPO=woa-react-app
 - export TAG=latest
@@ -34,9 +27,3 @@ after_success:
 - docker tag $HEROKU_TAG registry.heroku.com/$REPO/web
 - docker login --username=$HEROKU_USERNAME --password=$HEROKU_AUTHTOKEN registry.heroku.com
 - docker push registry.heroku.com/$REPO/web
-# deploy:
-#   skip_cleanup: true
-#   provider: script
-#   script: yarn build
-#   on:
-#     branch: ["master"]
