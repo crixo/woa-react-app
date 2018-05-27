@@ -9,7 +9,7 @@ FROM mhart/alpine-node:8
 RUN yarn global add serve
 WORKDIR /app
 COPY --from=build /usr/src/app/build .
-CMD serve -p 80 -s .
+CMD serve -p $PORT -s .
 
 # docker build -t webprofessor/woa-react-app:1.0 .
 #docker run -dit -p 8002:80 --name woa-react-app webprofessor/woa-react-app:1.0
