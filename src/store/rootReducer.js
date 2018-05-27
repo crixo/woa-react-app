@@ -10,6 +10,7 @@ import AnamnesiProssimeReducer from '../anamnesiProssime/anamnesiProssimeReducer
 import EsamiReducer from '../esami/esamiReducer';
 import TrattamentiReducer from '../trattamenti/trattamentiReducer';
 import ValutazioniReducer from '../valutazioni/valutazioniReducer';
+import UserReducer from '../authentication/userReducer';
 
 configurePageParams({
   // page: 'skip',
@@ -34,6 +35,7 @@ export default combineReducers({
   esamiStore: EsamiReducer,
   trattamentiStore: TrattamentiReducer,
   valutazioniStore: ValutazioniReducer,
+  userStore: UserReducer,
   uiStore: UiReducer,
   form: formReducer
 });

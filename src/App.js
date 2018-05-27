@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { NavLink, Route, withRouter } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 
+import { PrivateRoute } from './authentication/PrivateRoute';
+
 import PazientiListPage from './pages/pazienti-list-page';
 import PazienteFormPage from './pages/paziente-form-page';
 import PazienteDetailsPage from './pages/paziente-details-page';
@@ -13,6 +15,7 @@ import AnamnesiProssimaFormPage from './pages/anamnesi-prossima-form-page';
 import EsameFormPage from './pages/esame-form-page';
 import TrattamentoFormPage from './pages/trattamento-form-page';
 import ValutazioneFormPage from './pages/valutazione-form-page';
+import LoginPage from './pages/login-page';
 
 import { fetchProvince } from './pazienti/pazientiActions';
 import { fetchTipiAnamnesiRemote } from './anamnesiRemote/anamnesiRemoteActions';
@@ -36,44 +39,54 @@ class App extends Component {
 
       const consultoLink = this.props.consultoId !== undefined?
       <NavLink className="item" activeClassName="active" to={`/consulto/details/${this.props.consultoId}`}>Consulto</NavLink>
-      : <a className="item disabled">Consulto</a>;      
+      : <a className="item disabled">Consulto</a>;     
+      
+    const menu = this.props.authenticated?
+      <div className="ui five item menu">
+        <NavLink className="item" activeClassName="active" exact to="/">
+          Pazienti
+        </NavLink>
+        <NavLink className="item" activeClassName="active" exact to="/paziente/new">
+          Crea Paziente
+        </NavLink>
+        {pazienteLink}
+        {consultoLink}
+        <NavLink className="item" activeClassName="active" exact to="/login">
+          Logout
+        </NavLink>
+      </div>
+      : <div></div>;
+
 
     return (
       <Container>
-        <div className="ui four item menu">
-          <NavLink className="item" activeClassName="active" exact to="/">
-            Pazienti
-          </NavLink>
-          <NavLink className="item" activeClassName="active" exact to="/paziente/new">
-            Crea Paziente
-          </NavLink>
-          {pazienteLink}
-          {consultoLink}
-        </div>
+        {menu}
 
-        <Route exact path="/" component={PazientiListPage} />
-        <Route path="/paziente/details/:id" component={PazienteDetailsPage} />
-        <Route path="/paziente/new" component={PazienteFormPage} />
-        <Route path="/paziente/edit/:id" component={PazienteFormPage} />
+        <Route path="/login" component={LoginPage}/>
 
-        <Route path="/anamnesi-remota/new" component={AnamnesiRemotaFormPage} />
-        <Route path="/anamnesi-remota/edit/:id" component={AnamnesiRemotaFormPage} />
+        <PrivateRoute exact path="/" authenticated={this.props.authenticated} component={PazientiListPage} />
+        <PrivateRoute path="/paziente/details/:id" authenticated={this.props.authenticated} component={PazienteDetailsPage} />
+        <PrivateRoute path="/paziente/new" authenticated={this.props.authenticated} component={PazienteFormPage} />
+        <PrivateRoute path="/paziente/edit/:id" authenticated={this.props.authenticated} component={PazienteFormPage} />
 
-        <Route path="/consulto/details/:id" component={ConsultoDetailsPage} />
-        <Route path="/consulto/new" component={ConsultoFormPage} />
-        <Route path="/consulto/edit/:id" component={ConsultoFormPage} />
+        <PrivateRoute path="/anamnesi-remota/new" authenticated={this.props.authenticated} component={AnamnesiRemotaFormPage} />
+        <PrivateRoute path="/anamnesi-remota/edit/:id" authenticated={this.props.authenticated} component={AnamnesiRemotaFormPage} />
 
-        <Route path="/anamnesi-prossima/new" component={AnamnesiProssimaFormPage} />
-        <Route path="/anamnesi-prossima/edit/:id" component={AnamnesiProssimaFormPage} />
+        <PrivateRoute path="/consulto/details/:id" authenticated={this.props.authenticated} component={ConsultoDetailsPage} />
+        <PrivateRoute path="/consulto/new" authenticated={this.props.authenticated} component={ConsultoFormPage} />
+        <PrivateRoute path="/consulto/edit/:id" authenticated={this.props.authenticated} component={ConsultoFormPage} />
 
-        <Route path="/esame/new" component={EsameFormPage} />
-        <Route path="/esame/edit/:id" component={EsameFormPage} />
+        <PrivateRoute path="/anamnesi-prossima/new" authenticated={this.props.authenticated} component={AnamnesiProssimaFormPage} />
+        <PrivateRoute path="/anamnesi-prossima/edit/:id" authenticated={this.props.authenticated} component={AnamnesiProssimaFormPage} />
 
-        <Route path="/trattamento/new" component={TrattamentoFormPage} />
-        <Route path="/trattamento/edit/:id" component={TrattamentoFormPage} />
+        <PrivateRoute path="/esame/new" authenticated={this.props.authenticated} component={EsameFormPage} />
+        <PrivateRoute path="/esame/edit/:id" authenticated={this.props.authenticated} component={EsameFormPage} />
 
-        <Route path="/valutazione/new" component={ValutazioneFormPage} />
-        <Route path="/valutazione/edit/:id" component={ValutazioneFormPage} />
+        <PrivateRoute path="/trattamento/new" authenticated={this.props.authenticated} component={TrattamentoFormPage} />
+        <PrivateRoute path="/trattamento/edit/:id" authenticated={this.props.authenticated} component={TrattamentoFormPage} />
+
+        <PrivateRoute path="/valutazione/new" authenticated={this.props.authenticated} component={ValutazioneFormPage} />
+        <PrivateRoute path="/valutazione/edit/:id" authenticated={this.props.authenticated} component={ValutazioneFormPage} />
       </Container>
     );
   }
@@ -85,7 +98,8 @@ function mapStateToProps(state) {
 
   return {
     pazienteId: pazienteId,
-    consultoId: consultoId
+    consultoId: consultoId,
+    authenticated: state.userStore.authenticated
   }
 }
 

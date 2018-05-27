@@ -8,6 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 enjoy a [sample app](https://woa-react-app.herokuapp.com/) running on heroku using a [sample backend version](https://woa-api-sample.herokuapp.com) also hosted on heroku.
 
+Sample credentials: username=admin password=admin
+
 heroku apps have been deployed using [heroku docker registry deployment option](https://devcenter.heroku.com/articles/container-registry-and-runtime)
 ```
 docker push registry.heroku.com/woa-api-sample/web

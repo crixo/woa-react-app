@@ -6,5 +6,6 @@ export default {
   esamiState:{tipi:[], entities:[]},
   trattamentiState:{entities:[]},
   valutazioniState:{entities:[]},
+  userState:{authenticated: false},
   uiState: {loading: false, errors:{}}
 };

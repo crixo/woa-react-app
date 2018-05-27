@@ -30,6 +30,7 @@ export default function configureStore(initialState) {
       esamiStore: store.getState().esamiStore,
       trattamentiStore: store.getState().trattamentiStore,
       valutazioniStore: store.getState().valutazioniStore,
+      userStore: store.getState().userStore,
     })
   }, 1000))
 
