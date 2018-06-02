@@ -53,7 +53,7 @@ class ConsultoFormPage extends Component {
 function mapStateToProps(state, ownProps) {
   const { id } = ownProps.match.params;
   const entityId = parseInt(id, 10);
-  const entity = id? state.pazienteStore.consulti.find(x=>x.id === entityId) : {pazienteId: state.pazienteStore.paziente.id};
+  const entity = id? state.consultiStore.entities.find(x=>x.id === entityId) : {pazienteId: state.pazienteStore.paziente.id};
   console.log(entity);
   return {
     paziente: state.pazienteStore.paziente,
