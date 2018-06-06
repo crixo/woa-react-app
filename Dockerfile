@@ -3,11 +3,13 @@
 # COPY . .
 # RUN yarn run build
 FROM node:8 as build
+ARG REACT_APP_USER
+ARG REACT_APP_PWD
 WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
 RUN yarn
 COPY . ./
-RUN REACT_APP_BACKEND_BASE_URL=http://localhost:8010 REACT_APP_USER=admin REACT_APP_PWD=admin yarn build
+RUN REACT_APP_BACKEND_BASE_URL=http://localhost:8010 REACT_APP_USER=$REACT_APP_USER REACT_APP_PWD=$REACT_APP_PWD yarn build
 
 FROM mhart/alpine-node:8
 RUN yarn global add serve
@@ -19,6 +21,7 @@ COPY --from=build /usr/src/app/build .
 CMD serve -p 80 -s .
 
 # docker build -t webprofessor/woa-react-app:1.0 .
+#docker build --build-arg REACT_APP_USER=admin --build-arg REACT_APP_PWD=admin -t cloud.canister.io:5000/crixo/woa-react-app:1.1 .
 # docker build -t cloud.canister.io:5000/crixo/woa-react-app:1.1 .
 #docker run -dit -p 8002:80 --name woa-react-app webprofessor/woa-react-app:1.0
 #docker container run -it webprofessor/woa-react-app:1.0 bash
